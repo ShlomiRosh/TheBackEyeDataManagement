@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataManagement.Api</name>
+    </assembly>
+    <members>
+        <member name="T:DataManagement.Api.Controllers.IsAliveController">
+            <summary>
+            IsAliveController is for checking that the server is alive and accessible from client
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.IsAliveController.Head">
+            <summary>
+            By calling this method successfuly it can be sured that the server is alive and on  
+            </summary>
+            <response code="200">Return nothing</response>
+        </member>
+        <member name="T:DataManagement.Api.Controllers.LessonController">
+            <summary>
+            LessonController is responsible for all the leasson's CRUD operations using API calls 
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.Get(System.Int32)">
+            <summary>
+            Get LessonDto object by lesson id
+            </summary>
+            <param name="lessonId">Lesson id</param>
+            <response code="200">LessonDto object contains all of the lesson details</response>
+            <response code="400">BadRequest - invalid values (null or empty class code)</response>
+            <response code="404">NotFound - cannot find the lesson in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.GetNextLesson(System.String)">
+            <summary>
+            Get LessonDto object (contains the next lesson's dates) by class code string
+            </summary>
+            <param name="classCode">The class code string</param>
+            <response code="200">LessonDto object contains all of the lesson details</response>
+            <response code="400">BadRequest - invalid values (null or empty class code)</response>
+            <response code="404">NotFound - cannot find the lesson in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.GetLessons(System.Int32)">
+            <summary>
+            Get list of LessonDto object related to teacher by the given teacher id
+            </summary>
+            <param name="teacherId">The id of the teacher</param>
+            <response code="200">List of LessonDto object, each one contains all of the lesson details</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the related lessons in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.Post(Dtos.LessonDto)">
+            <summary>
+            Add a new lesson to DB
+            </summary>
+            <param name="lessonDto">LessonDto object contains all of the lesson's details which will be added to DB</param>
+            <response code="200">LessonDto object contains all of the details from DB</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.Put(Dtos.LessonDto)">
+            <summary>
+            Change lesson in the DB
+            </summary>
+            <param name="lessonDto">LessonDto object contains all of the new lesson's details</param>
+            <response code="200">LessonDto object contains all of the details from DB</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LessonController.Delete(System.Int32)">
+            <summary>
+            Delete lessonDto object by lesson id
+            </summary>
+            <param name="lessonId">The lesson we want to delete </param>
+            <response code="200">bool true</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the lesson in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="T:DataManagement.Api.Controllers.LogController">
+            <summary>
+            LogController is responsible for all the log's CRUD operations using API calls 
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LogController.Get(System.Int32)">
+            <summary>
+            Get LogDto object by the log id number
+            </summary>
+            <param name="logId">The identity number of the log</param>
+            <response code="200">LogDto object contains all of the log's details</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the student in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LogController.GetLogs(System.Int32)">
+            <summary>
+            Get list of LogDto object related to the given person id
+            </summary>
+            <param name="personId">The identity number of the person</param>
+            <response code="200">list of LogDto object contains all of the log's details</response>
+            <response code="400">BadRequest - invalid values (lower than 0)</response>
+            <response code="404">NotFound - cannot find logs of the student in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LogController.Post(Dtos.LogDto)">
+            <summary>
+            Add a new log to DB
+            </summary>
+            <param name="logDto">LogDto object contains all of the log's details which will be added to DB</param>
+            <response code="200">LogDto object contains all of the log's details from DB</response>
+            <response code="400">BadRequest - invalid values (Student or Person is null)</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.LogController.Delete(System.Int32)">
+            <summary>
+            Delete LogDto object by the log id number
+            </summary>
+            <param name="logId">The identity number of the log</param>
+            <response code="200">bool true</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the student in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="T:DataManagement.Api.Controllers.MeasurementController">
+            <summary>
+            MeasurementController is responsible for all the Measurement's CRUD operations using API calls 
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.TestSignalR">
+            <summary>
+            This API is just for testing - it sends new measurements to connected clients
+            </summary>
+            <returns>Ok if success, expception string otherwise</returns>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.Post(Dtos.MeasurementDto)">
+            <summary>
+            Add a new Measurement to DB
+            </summary>
+            <param name="measurementDto">MeasurementDto object contains all of the Measurement's details which will be added to DB</param>
+            <response code="200">MeasurementDto object contains all of the details from DB</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.PostMeasurements(System.Collections.Generic.List{Dtos.MeasurementDto})">
+            <summary>
+            Add a list of new Measurements to DB
+            </summary>
+            <param name="measurements">List of MeasurementDto objects, each contains all of the Measurement's details which will be added to DB</param>
+            <response code="200">List of added MeasurementDto objects, each contains all of the Measurement's details added to DB</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.GetStudentsAttendance(System.Int32,System.DateTime)">
+            <summary>
+            Get list of students attendance in specfic lesson in specific time
+            </summary>
+            <param name="lessonId">id of the requested lesson</param>
+            <param name="lessonTime">time of the requested lesson</param>
+            <response code="200">List of StudentAttendanceDto, each contains person details and its time entrance to the lesson</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the lesson or any students in the lesson</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.GetStudentMeasurements(System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            Get student's measurements in a given lesson and time
+            </summary>
+            <param name="lessonId">id of the requested lesson</param>
+            <param name="personId">id of the requested student</param>
+            <param name="lessonTime">time of the requested lesson</param>
+            <response code="200">List of MeasurementDto, each contains measurements result in specfic time during the lesson</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the student or any measurements in the lesson</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.GetLessonMeasurements(System.Int32,System.DateTime)">
+            <summary>
+            Get lesson measurements of all students in a given lesson and time
+            </summary>
+            <param name="lessonId">id of the requested lesson</param>
+            <param name="lessonTime">time of the requested lesson</param>
+            <response code="200">List of MeasurementDto, each contains measurements result in specfic time during the lesson</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the student or any measurements in the lesson</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.GetLessonHistory(System.Int32)">
+            <summary>
+            Get lesson history - all the lesson's dates which took place in some dates
+            </summary>
+            <param name="lessonId">id of the requested lesson</param>
+            <response code="200">List of DateTime, each represents a date of lesson which took place</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the lesson</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.Delete(System.Int32)">
+            <summary>
+            Delete measurement from DB
+            </summary>
+            <param name="measurementId">id of the requested measurement</param>
+            <response code="200">true - deletion was success</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the measurement in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.MeasurementController.SendMeasurementsToClients(Dtos.MeasurementDto[])">
+            <summary>
+            Send measurements to connected clients
+            </summary>
+            <param name="measuremenrts">measurements to send</param>
+            <returns>Empty string if success, exception string otherwise</returns>
+        </member>
+        <member name="T:DataManagement.Api.Controllers.PersonController">
+            <summary>
+            PersonController is responsible for all the Person's CRUD operations using API calls 
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.PersonController.Post(System.String)">
+            <summary>
+            Get PersonDto object by the person password
+            </summary>
+            <param name="password">The password of the person (student)</param>
+            <response code="200">PersonDto object contains all of the person's personal details</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the person in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.PersonController.Post(System.String,System.String)">
+            <summary>
+            Get PersonDto object (represents the teacher) by the person email and password
+            </summary>
+            <param name="email">The email of the person (teacher)</param>
+            <param name="password">The password of the person (teacher)</param>
+            <response code="200">PersonDto object contains all of the person's personal details</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the person in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.PersonController.Post(Dtos.PersonDto)">
+            <summary>
+            Add a new person to DB
+            </summary>
+            <param name="personDto">PersonDto object contains all of the person's personal details which will be added to DB</param>
+            <response code="200">PersonDto object contains all of the person's personal details from DB</response>
+            <response code="400">BadRequest - invalid values (Person is null)</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.PersonController.Put(Dtos.PersonDto)">
+            <summary>
+            Change Person in the DB
+            </summary>
+            <param name="personDto">PersonDto object contains all of the new person's details</param>
+            <response code="200">PersonDto object contains all of the details from DB</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.PersonController.Delete(System.Int32)">
+            <summary>
+            Delete person from DB
+            </summary>
+            <param name="personId">id of the requested person</param>
+            <response code="200">true - deletion was success</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="404">NotFound - cannot find the person in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="T:DataManagement.Api.Controllers.StudentLessonController">
+            <summary>
+            StudentLessonController is responsible for all the student leasson's CRUD operations using API calls 
+            </summary>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.StudentLessonController.Get(System.Int32)">
+            <summary>
+            Get all the students participating in a given lesson id
+            </summary>
+            <param name="lessonId">Id of the lesson</param>
+            <response code="200">List of personDto object (contains all of the details from DB) which are in the lesson</response>
+            <response code="400">BadRequest - invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.StudentLessonController.Post(Dtos.StudentLessonDto)">
+            <summary>
+            Add a new lesson to DB
+            </summary>
+            <param name="studentLessonDto">StudentLessonDto object contains all of the student lesson's details which will be added to DB</param>
+            <response code="200">StudentLessonDto object contains all of the details from DB</response>
+            <response code="400">BadRequest - null object or invalid values</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:DataManagement.Api.Controllers.StudentLessonController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Delete StudentLessonDto object by lesson id and person id
+            </summary>
+            <param name="lessonId">The lesson of student lesson relation we want to delete</param>
+            <param name="personId">The student of student lesson relation we want to delete</param>
+            <response code="200">True if deletion was a success and false otherwise</response>
+            <response code="400">BadRequest - invalid values (lower than 1)</response>
+            <response code="404">NotFound - cannot find the student Lesson in DB</response>
+            <response code="500">InternalServerError - for any error occurred in server</response>
+        </member>
+        <member name="M:BusinessLogic.PasswordGenerator.Generate(System.Int32,System.Int32)">
+            <summary>
+            Generates a new password based on the given params
+            </summary>
+            <param name="length">password's desired length</param>
+            <param name="numberOfNonAlphanumericCharacters">number of special chars (non alphanumeric) in passwords</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
